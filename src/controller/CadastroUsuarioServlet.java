@@ -13,23 +13,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Cliente;
-import persistence.ClienteDao;
 
+import model.Usuario;
+import persistence.LoginDao;
 
 
 
 /**
- * Servlet implementation class CadastroClienteServlet
+ * Servlet implementation class CadastroUsuario
  */
-@WebServlet("/cadcliente")
-public class CadastroClienteServlet extends HttpServlet {
+@WebServlet(name = "CadastroUsuarioServlet", urlPatterns = { "/cadusuario" })
+public class CadastroUsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CadastroClienteServlet() {
+    public CadastroUsuarioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,30 +39,32 @@ public class CadastroClienteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("entrou no get do cadCliente");
 		HttpSession session = request.getSession();
-		ClienteDao cDao = new ClienteDao();
-		List<Cliente> listaCliente = new ArrayList<>();
+		System.out.println("entrou no get do cadusuario");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		LoginDao uDao = new LoginDao();
+		List<Usuario> listaUsuarios = new ArrayList<>();
 		String cmd = request.getParameter("cmd");
-		if("alterar".equals(cmd)) {
+		if ("alterar".equals(cmd)) {
 			
 		}else if("remover".equals(cmd)) {
+			
 			try {
 				int id = Integer.parseInt(request.getParameter("id"));
-				cDao.removerClientes(id);
-				listaCliente = cDao.pesquisarTodosClientes();
-				session.setAttribute("CLIENTE", listaCliente);
+				uDao.removerUsuario(id);
+				listaUsuarios = uDao.pesquisarTodosUsuarios();
+				session.setAttribute("USUARIO", listaUsuarios);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
+			
 		}else {
 		try {
-			System.out.println("entrou no try do cadCliente");
-			listaCliente = cDao.pesquisarTodosClientes();
-			session.setAttribute("CLIENTE", listaCliente);
+			System.out.println("entrou no try do cadusuario");
+			listaUsuarios = uDao.pesquisarTodosUsuarios();
+			session.setAttribute("USUARIO", listaUsuarios);
 
 
 		} catch (SQLException e) {
@@ -71,7 +73,6 @@ public class CadastroClienteServlet extends HttpServlet {
 		}
 		}
 		response.sendRedirect("./painel.jsp");
-	
 	}
 
 	/**
@@ -79,18 +80,21 @@ public class CadastroClienteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nome = request.getParameter("nome");
-		String telefone =request.getParameter("telefone");
-		String endereco = request.getParameter("endereco");
-		System.out.println("entrou no post do cadcliente");
-		ClienteDao cDao = new ClienteDao();
-		Cliente c = new Cliente();
-		c.setNome(nome);
-		c.setTelefone(telefone);
-		c.setEndereco(endereco);
+		int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+		String login =request.getParameter("login");
+		String senha = request.getParameter("senha");
+		int tipo = Integer.parseInt(request.getParameter("tipo"));
+		System.out.println("entrou no post do cadproduto");
+		LoginDao uDao = new LoginDao();
+		Usuario u = new Usuario();
+		u.setIdCliente(idCliente);
+		u.setLogin(login);
+		u.setSenha(senha);
+		u.setTipo(tipo);
+		
 		try {
 			System.out.println("entrou no try do cadproduto");
-			cDao.insereClientes(c);		
+			uDao.insereUsuario(u);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

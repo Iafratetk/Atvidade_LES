@@ -11,6 +11,7 @@ import model.Pedido;
 
 
 
+
 public class PedidoDao {
 	Connection c;
 	
@@ -46,6 +47,27 @@ public class PedidoDao {
 		ps.setInt(1, ped.getIdCliente());
 		ps.setDouble(2, ped.getValorTotal());
 		ps.setInt(3, ped.getFormaPagamento());
+		ps.execute();
+		ps.close();
+	}
+
+	public void removerPedido(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "DELETE pedido WHERE id = ?";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setInt(1, id);
+		ps.execute();
+		ps.close();
+	}
+	
+	public void atualizaPedido (Pedido ped) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "UPDATE pedido SET  id_cliente = ?, valor_total = ?, forma_pagamento = ?  WHERE id = ? ";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setInt(1, ped.getIdCliente());
+		ps.setDouble(2, ped.getValorTotal());
+		ps.setInt(3, ped.getFormaPagamento());
+		ps.setInt(4, ped.getId());
 		ps.execute();
 		ps.close();
 	}

@@ -10,6 +10,7 @@ import java.util.List;
 import model.Cliente;
 
 
+
 public class ClienteDao {
 	
 	private Connection c;
@@ -46,6 +47,24 @@ public class ClienteDao {
 		ps.setString(1, cli.getNome());
 		ps.setString(2, cli.getTelefone());
 		ps.setString(3, cli.getEndereco());
+		ps.execute();
+		ps.close();
+	}
+	public void removerClientes(int id) throws SQLException {
+		String sql = "DELETE cliente	 WHERE id = ?";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setInt(1, id);
+		ps.execute();
+		ps.close();
+	}
+	public void atualizaCliente (Cliente cli) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "UPDATE cliente SET  nome = ?,  telefone = ?, endereco = ?   WHERE id = ? ";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setString(1, cli.getNome());
+		ps.setString(2, cli.getTelefone());
+		ps.setString(3, cli.getEndereco());
+		ps.setInt(4, cli.getId());
 		ps.execute();
 		ps.close();
 	}

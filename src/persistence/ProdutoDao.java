@@ -48,4 +48,22 @@ public class ProdutoDao {
 		ps.execute();
 		ps.close();
 	}
+	public void removerProdutos(int id) throws SQLException {
+		String sql = "DELETE produto WHERE id = ?";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setInt(1, id);
+		ps.execute();
+		ps.close();
+	}
+	public void atualizaProdutos(Produto prod) throws SQLException {
+		// TODO Auto-generated method stub
+		String sql = "UPDATE produto SET nome = ?, quantidade = ?, valor = ?   WHERE id = ? ";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setString(1, prod.getNome());
+		ps.setInt(2, prod.getQuantidade());
+		ps.setDouble(3, prod.getValor());
+		ps.setInt(4, prod.getId());
+		ps.execute();
+		ps.close();
+	}
 }

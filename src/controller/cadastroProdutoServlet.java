@@ -43,17 +43,30 @@ public class cadastroProdutoServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		ProdutoDao pDao = new ProdutoDao();
 		List<Produto> listaProduto = new ArrayList<>();
+		String cmd = request.getParameter("cmd");
+		if("alterar".equals(cmd)) {
+			
+		}else if("remover".equals(cmd)) {
+			try {
+				int id = Integer.parseInt(request.getParameter("id"));
+				pDao.removerProdutos(id);
+				listaProduto = pDao.pesquisarTodos();
+				session.setAttribute("PRODUTO", listaProduto);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+		}else {
 		try {
 			System.out.println("entrou no try");
-			PrintWriter out = response.getWriter();
 			listaProduto = pDao.pesquisarTodos();
 			session.setAttribute("PRODUTO", listaProduto);
-			response.sendRedirect("./index.jsp");
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
+		response.sendRedirect("./painel.jsp");
 	}
 
 	/**
@@ -79,7 +92,7 @@ public class cadastroProdutoServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.sendRedirect("./index.jsp");
+		response.sendRedirect("./painel.jsp");
 	}
 
 }
