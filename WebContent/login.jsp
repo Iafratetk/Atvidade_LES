@@ -14,7 +14,7 @@
 	function validarLogin(){
 		if(document.formLogin.usuario.value==""){
 			alert("campo usuario não informado");
-			return false;
+			return false;	
 		}
 		if(document.formLogin.senha.value==""){
 			alert("campo senha não informado");

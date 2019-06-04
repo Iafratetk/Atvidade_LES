@@ -52,6 +52,7 @@
 				<a href="./cadproduto?cmd=editar&id=<%=p.getId()%>">Editar</a>
 				<a href="./cadproduto?cmd=remover&id=<%=p.getId()%>">Remover</a>
 				</td>
+				
 			</tr>
 		</table>
 		<%
