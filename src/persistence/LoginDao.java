@@ -53,7 +53,7 @@ public class LoginDao {
 		ps.close();
 	}
 	public void removerUsuario(int id) throws SQLException {
-		String sql = "DELETE usuario WHERE id = ?";
+		String sql = "DELETE FROM usuario WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setInt(1, id);
 		ps.execute();

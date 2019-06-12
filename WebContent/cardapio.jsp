@@ -21,7 +21,7 @@
 	</div>
 	
 	<center>
-	<h2 Style="color:#530EE8"><u><td>CARDÁPIO</td></u></h2>
+	<h2 Style="color:#530EE8"><u><td>CARDÁPIO!</td></u></h2>
 	<div>	
 	<form action="cardapio" method="get">
 	

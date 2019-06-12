@@ -7,7 +7,7 @@ public class Produto {
 	private String nome;
 	private int quantidade;
 	private double valor;
-	
+	private double  total;	
 	public int getQuantidade() {
 		return quantidade;
 	}
@@ -31,5 +31,12 @@ public class Produto {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public void setTotal(double valor) {
+		if(this.valor == 0) {
+			this.valor= valor;
+		}else {
+			this.valor+=valor;
+		}
 	}
 }

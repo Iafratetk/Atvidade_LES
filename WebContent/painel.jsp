@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ page
-	import="java.text.SimpleDateFormat, java.util.List, java.util.ArrayList, model.Produto, model.Cliente, model.Usuario, model.Pedido, model.PedidoProduto"%>
+	import="java.text.SimpleDateFormat, java.util.List, java.util.ArrayList, model.Produto, model.Cliente, model.Usuario, model.Pedido, model.PedidoProduto, persistence.LoginDao, persistence.ClienteDao, persistence.PedidoDao, persistence.ProdutoDao, controller.SessionCounter, exception.InvalidUserAccesDenied"%>
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -16,10 +16,61 @@
 	<%
 	Usuario us = (Usuario) session.getAttribute("usuarioautenticado");
 	String nomeUsuario = us.getLogin();
+	int tipo = us.getTipo();
 	if(nomeUsuario==null){
 		throw new ServletException("Nenhum Usuario logado");
 	}
+	if(tipo == 1){
+		throw new InvalidUserAccesDenied("Acesso negado!");
+	}
 	%>
+	<div>
+		<%
+		int contadorUsuario =0;
+		List<Usuario> listaU = new ArrayList<>();
+		LoginDao uDao = new LoginDao();
+		listaU = uDao.pesquisarTodosUsuarios();
+		for (Usuario user : listaU){
+			contadorUsuario = contadorUsuario + 1;
+		}
+		int contadorCliente = 0;
+		List<Cliente> listaC = new ArrayList<>();
+		ClienteDao cDao = new ClienteDao();
+		listaC = cDao.pesquisarTodosClientes();
+		for (Cliente cli : listaC){
+			contadorCliente = contadorCliente + 1;
+		}
+		int contadorPedido = 0;
+		double tot = 0;
+		List<Pedido> listaP = new ArrayList<>();
+		PedidoDao pDao = new PedidoDao();
+		listaP = pDao.pesquisarTodosPedidos();
+		for (Pedido ped : listaP){
+			contadorPedido = contadorPedido + 1;
+			tot = ped.getValorTotal() + tot;
+		}
+		int contadorProduto =0;
+		List<Produto> listaPr = new ArrayList<>();
+		ProdutoDao prDao = new ProdutoDao();
+		listaPr = prDao.pesquisarTodos();
+		for (Produto pr : listaPr){
+			contadorProduto =  contadorProduto + 1;
+		}
+		double media = tot/contadorPedido;
+		%>
+		<table border="3">
+		<tr>
+			
+			<h5 style="color:blue">Quantidade de Usuarios Cadastrados: <h5 style="color:red"><%=contadorUsuario%></h5></h5>
+			<h5 style="color:blue">Quantidade de Clientes Cadastrados: <h5 style="color:red"><%=contadorCliente%></h5></h5>
+			<h5 style="color:blue">Quantidade de Pedido Realizados:        <h5 style="color:red"><%=contadorPedido%></h5></h5>
+			<h5 style="color:blue">Quantidade de Produtos Cadastrados: <h5 style="color:red"><%=contadorProduto %></h5></h5>
+			<h5 style="color:blue">Quantidade de Dinheiro Negociado: <h5 style="color:red"><%=tot%> R$</h5></h5>
+			<h5 style="color:blue">Média de valor por Pedido:  <h5 style="color:red"><%=media%> R$</h5></h5>
+			<h5>Sessões Iniciadas: <%=SessionCounter.getActiveSessions()%></h5>
+		</tr>
+		</table>
+	</div>
 </div>
 <h1>PRODUTO</h1>
 

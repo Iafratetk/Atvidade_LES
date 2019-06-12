@@ -53,7 +53,7 @@ public class PedidoDao {
 
 	public void removerPedido(int id) throws SQLException {
 		// TODO Auto-generated method stub
-		String sql = "DELETE pedido WHERE id = ?";
+		String sql = "DELETE FROM pedido WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setInt(1, id);
 		ps.execute();

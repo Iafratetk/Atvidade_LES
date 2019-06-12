@@ -51,7 +51,8 @@ public class ClienteDao {
 		ps.close();
 	}
 	public void removerClientes(int id) throws SQLException {
-		String sql = "DELETE cliente	 WHERE id = ?";
+		
+		String sql = "DELETE FROM cliente WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setInt(1, id);
 		ps.execute();

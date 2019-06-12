@@ -22,7 +22,7 @@ public class ProdutoDao {
 	public List<Produto> pesquisarTodos () throws SQLException{
 		System.out.println("entrou no pesquisar todos produtos");
 		List<Produto> listaProdutos = new ArrayList<Produto>();
-		String sql = "SELECT id, nome, quantidade, valor FROM produto ";
+		String sql = "SELECT id, nome, quantidade, valor FROM produto";
 		PreparedStatement ps = c.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
@@ -49,7 +49,7 @@ public class ProdutoDao {
 		ps.close();
 	}
 	public void removerProdutos(int id) throws SQLException {
-		String sql = "DELETE produto WHERE id = ?";
+		String sql = "DELETE FROM produto WHERE id = ?";
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setInt(1, id);
 		ps.execute();

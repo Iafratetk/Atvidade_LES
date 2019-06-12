@@ -64,7 +64,14 @@
     <center>
       <img class="responsive-img" style="width: 250px;" src="https://media.giphy.com/media/lwhDD4j3IFCKlOhMS8/giphy.gif"/>
       <div class="section"></div>
-
+		<%
+		String erro = (String) session.getAttribute("ERROR");
+		session.setAttribute("ERROR", "");
+		if (erro.equals(null)){
+			erro = "";
+		}
+		%>
+		<h7 style="color:red"><%=erro%></h7>
       <h5 class="indigo-text">Faça aqui seu login</h5>
       <div class="section"></div>
 
