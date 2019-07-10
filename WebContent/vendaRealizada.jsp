@@ -23,6 +23,18 @@
 		double valorTotal = (double) session.getAttribute("FINAL2");
 		String nome = (String) session.getAttribute("FINAL3");
 	%>
+	<nav class="red lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="./index.jsp" class="brand-logo">Energize Company</a>
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
+  <div align="right" valign="top">
+	<a class="waves-effect waves-light btn" Style="background:red"  href="remover.jsp">Sair</a>
+</div>
 <body>
 	<center>
 	<h3 style="color:red">O seu pedido Nº <%=numPedido%> foi finalizado com sucesso!</h3>

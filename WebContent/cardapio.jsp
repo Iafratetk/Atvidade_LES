@@ -12,6 +12,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Cardápio</title>
 </head>
+   <nav class="red lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="./index.jsp" class="brand-logo">Energize Company</a>
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
 <body>
 	<div align="right" valign="top">
 	<form>
@@ -21,7 +30,7 @@
 	</div>
 	
 	<center>
-	<h2 Style="color:#530EE8"><u><td>CARDÁPIO!</td></u></h2>
+	<h2 Style="color:red"><u><td>CARDÁPIO!</td></u></h2>
 	<div>	
 	<form action="cardapio" method="get">
 	
@@ -62,4 +71,13 @@
 	</div>
 	</center>
 </body>
+ <nav class="red lighten-1" role="navigation">
+    
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
 </html>

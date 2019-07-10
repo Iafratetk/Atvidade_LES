@@ -20,7 +20,7 @@ public class GenericDAO {
 					.getConnection(
 							"jdbc:jtds:sqlserver://127.0.0.1:1433;DatabaseName=atividadeLES;namedPipe=true",
 							"lucasSQL", "lucas1996");
-			*/				
+				*/			
 			//CONEXAO MYSQL PARA O AZURE
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");

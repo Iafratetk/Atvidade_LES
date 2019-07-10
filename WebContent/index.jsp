@@ -12,7 +12,7 @@
 <title>pagina inicial</title>
 </head>
    <nav class="red lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="./index.jsp" class="brand-logo">Energize Company</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="./index.jsp" class="brand-logo">Energize Company  ©</a>
       <ul class="right hide-on-med-and-down">
       </ul>
 	
@@ -48,5 +48,13 @@
 	<center>
 		</center>
 </body>
-
+ <nav class="red lighten-1" role="navigation">
+    
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
 </html>

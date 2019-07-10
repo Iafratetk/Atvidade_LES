@@ -26,6 +26,18 @@
 		List<Produto> listaProduto = pDao.pesquisarTodos();
 		session.setAttribute("LISTASACOLA", listaSacola);		
 	%>
+	<nav class="red lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="./principal.jsp" class="brand-logo">Energize Company</a>
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
+<div align="right" valign="top">
+	<a class="waves-effect waves-light btn" Style="background:red"  href="remover.jsp">Sair</a>
+</div>
 <body>
 	<form action="sacola" method="get">
 	<td>
@@ -77,4 +89,13 @@
 		</form>
 		</div>
 </body>
+ <nav class="red lighten-1" role="navigation">
+    
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
 </html>

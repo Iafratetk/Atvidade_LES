@@ -11,6 +11,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <title>Painel de administrador</title>
 </head>
+   <nav class="red lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="./principal.jsp" class="brand-logo">Energize Company</a>
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
+  <div align="right" valign="top">
+	<a class="waves-effect waves-light btn" Style="background:red"  href="remover.jsp">Sair</a>
+</div>
 <body>
 <div>
 	<%
@@ -67,7 +79,7 @@
 			<h5 style="color:blue">Quantidade de Produtos Cadastrados: <h5 style="color:red"><%=contadorProduto %></h5></h5>
 			<h5 style="color:blue">Quantidade de Dinheiro Negociado: <h5 style="color:red"><%=tot%> R$</h5></h5>
 			<h5 style="color:blue">Média de valor por Pedido:  <h5 style="color:red"><%=media%> R$</h5></h5>
-			<h5>Sessões Iniciadas: <%=SessionCounter.getActiveSessions()%></h5>
+			<h5 style="color:green">Sessões Iniciadas: <%=SessionCounter.getActiveSessions()%></h5>
 		</tr>
 		</table>
 	</div>
@@ -288,4 +300,13 @@
 	
 	</form>
 </body>
+ <nav class="red lighten-1" role="navigation">
+    
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
 </html>

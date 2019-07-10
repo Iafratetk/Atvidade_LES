@@ -57,6 +57,15 @@
     }
   </style>
 </head>
+   <nav class="red lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="./index.jsp" class="brand-logo">Energize Company</a>
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
 <body>
 	<form name="formLogin" action="login" method="post">
   <div class="section"></div>
@@ -65,9 +74,10 @@
       <img class="responsive-img" style="width: 250px;" src="https://media.giphy.com/media/lwhDD4j3IFCKlOhMS8/giphy.gif"/>
       <div class="section"></div>
 		<%
-		String erro = (String) session.getAttribute("ERROR");
+		String erro = "";
+		erro = (String) session.getAttribute("ERROR");
 		session.setAttribute("ERROR", "");
-		if (erro.equals(null)){
+		if (erro == null){
 			erro = "";
 		}
 		%>
@@ -125,4 +135,13 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 	</form>
 </body>
+ <nav class="red lighten-1" role="navigation">
+    
+      <ul class="right hide-on-med-and-down">
+      </ul>
+	
+      <ul id="nav-mobile" class="side-nav">
+        </ul>
+      </div>
+  </nav>
 </html>
